@@ -39,6 +39,13 @@ const updateCard = (cardObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteCard = (fireBaseKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/vocabwords/${fireBaseKey}.json`)
+    .then(() => getCards().then(resolve))
+    .catch(reject);
+});
+
 const showCards = (array) => {
   clearDOM();
   array.forEach((element) => {
@@ -61,5 +68,6 @@ export {
   showCards,
   createCard,
   getSingleCard,
-  updateCard
+  updateCard,
+  deleteCard
 };
