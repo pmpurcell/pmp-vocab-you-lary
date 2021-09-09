@@ -18,7 +18,7 @@ const renderCardForm = (obj = { }) => {
   <option value="CSS">CSS</option>
   <option value="Javascript">Javascript</option>
   </select>
-  <button type="submit" id="${obj.firebaseKey ? `update-book--${obj.firebaseKey}` : 'submit-book'}" class="btn btn-primary">Submit</button>
+  <button type="submit" id="${obj.fireBaseKey ? `update-card--${obj.fireBaseKey}` : 'submit-card'}" class="btn btn-primary">Submit</button>
 </form>
     `;
 };

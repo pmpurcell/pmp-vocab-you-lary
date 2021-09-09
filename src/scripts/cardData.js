@@ -19,7 +19,7 @@ const createCard = (cardObj) => new Promise((resolve, reject) => {
       axios
         .patch(`${dbUrl}/vocabwords/${response.data.name}.json`, body)
         .then(() => {
-          getCards(cardObj).then(resolve);
+          getCards().then(resolve);
         });
     })
     .catch(reject);
@@ -29,6 +29,13 @@ const getSingleCard = (fireBaseKey) => new Promise((resolve, reject) => {
   axios
     .get(`${dbUrl}/vocabwords/${fireBaseKey}.json`)
     .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+const updateCard = (cardObj) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbUrl}/vocabwords/${cardObj.fireBaseKey}.json`, cardObj)
+    .then(() => getCards(cardObj).then(resolve))
     .catch(reject);
 });
 
@@ -53,5 +60,6 @@ export {
   getCards,
   showCards,
   createCard,
-  getSingleCard
+  getSingleCard,
+  updateCard
 };

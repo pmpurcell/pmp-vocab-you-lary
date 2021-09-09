@@ -1,11 +1,16 @@
-import { createCard, getSingleCard, showCards } from '../cardData';
+import {
+  createCard,
+  getSingleCard,
+  showCards,
+  updateCard
+} from '../cardData';
 import renderCardForm from '../components/renderCardForm';
 
 const domEvents = () => {
-  document.querySelector('#formContainer').addEventListener('click', (e) => {
-    if (e.target.id.includes('submit')) {
+  document.querySelector('#app').addEventListener('click', (e) => {
+    if (e.target.id.includes('submit-card')) {
       e.preventDefault();
-      console.warn('New Card Submitted!');
+      console.warn(e.target.id);
       const getTime = new Date();
       const newWord = {
         title: document.querySelector('#cardTitle').value,
@@ -15,9 +20,20 @@ const domEvents = () => {
       };
       createCard(newWord).then(showCards);
     }
-  });
-
-  document.querySelector('#cardContainer').addEventListener('click', (e) => {
+    if (e.target.id.includes('update-card')) {
+      e.preventDefault();
+      const [, fireBaseKey] = e.target.id.split('--');
+      console.warn('Card Updated!');
+      const getTime = new Date();
+      const newWord = {
+        title: document.querySelector('#cardTitle').value,
+        definition: document.querySelector('#cardDef').value,
+        language: document.querySelector('#cardLang').value,
+        time: `${getTime.getHours()}:${getTime.getMinutes()}`,
+        fireBaseKey
+      };
+      updateCard(newWord).then(showCards);
+    }
     if (e.target.id.includes('edit')) {
       const [, fireBaseKey] = e.target.id.split('--');
       console.warn('Clicked Edit Button');
