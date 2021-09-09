@@ -5,10 +5,12 @@ const domEvents = () => {
     if (e.target.id.includes('submit')) {
       e.preventDefault();
       console.warn('New Card Submitted!');
+      const getTime = new Date();
       const newWord = {
         title: document.querySelector('#cardTitle').value,
         definition: document.querySelector('#cardDef').value,
-        language: document.querySelector('#cardLang').value
+        language: document.querySelector('#cardLang').value,
+        time: `${getTime.getHours()}:${getTime.getMinutes()}`
       };
       createCard(newWord).then(showCards);
     }
