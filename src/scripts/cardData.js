@@ -19,7 +19,7 @@ const createCard = (cardObj) => new Promise((resolve, reject) => {
       axios
         .patch(`${dbUrl}/vocabwords/${response.data.name}.json`, body)
         .then(() => {
-          getCards(cardObj).then(resolve);
+          getCards().then(resolve);
         });
     })
     .catch(reject);
@@ -35,7 +35,7 @@ const getSingleCard = (fireBaseKey) => new Promise((resolve, reject) => {
 const updateCard = (cardObj) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbUrl}/vocabwords/${cardObj.fireBaseKey}.json`, cardObj)
-    .then(() => getCards(cardObj).then(resolve))
+    .then(() => getCards().then(resolve))
     .catch(reject);
 });
 
