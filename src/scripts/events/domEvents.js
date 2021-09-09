@@ -1,3 +1,5 @@
+import { createCard, showCards } from '../cardData';
+
 const domEvents = () => {
   document.querySelector('#formContainer').addEventListener('click', (e) => {
     if (e.target.id.includes('submit')) {
@@ -8,7 +10,7 @@ const domEvents = () => {
         definition: document.querySelector('#cardDef').value,
         language: document.querySelector('#cardLang').value
       };
-      console.warn(newWord);
+      createCard(newWord).then(showCards);
     }
   });
 };
