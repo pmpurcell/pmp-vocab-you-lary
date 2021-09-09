@@ -25,17 +25,33 @@ const createCard = (cardObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleCard = (fireBaseKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/vocabwords/${fireBaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 const showCards = (array) => {
   clearDOM();
   array.forEach((element) => {
     document.querySelector('#cardContainer').innerHTML += `
     <div id="vocabCard">
-    <h5>${element.title}</h5>
-    <p>${element.definition}</p>
-    <p>${element.language}</p>
+      <h5>${element.title}</h5>
+      <p>${element.definition}</p>
+      <p>${element.language}</p>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" id="edit--${element.fireBaseKey}" class="btn btn-outline-primary">Edit</button>
+        <button type="button" id="delete--${element.fireBaseKey}" class="btn btn-outline-primary">Delete</button>
+      </div>
     </div>
 `;
   });
 };
 
-export { getCards, showCards, createCard };
+export {
+  getCards,
+  showCards,
+  createCard,
+  getSingleCard
+};
