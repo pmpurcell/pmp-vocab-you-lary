@@ -32,6 +32,13 @@ const getSingleCard = (fireBaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const updateCard = (cardObj) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbUrl}/vocabwords/${cardObj.fireBaseKey}.json`, cardObj)
+    .then(() => getCards(cardObj).then(resolve))
+    .catch(reject);
+});
+
 const showCards = (array) => {
   clearDOM();
   array.forEach((element) => {
@@ -53,5 +60,6 @@ export {
   getCards,
   showCards,
   createCard,
-  getSingleCard
+  getSingleCard,
+  updateCard
 };
