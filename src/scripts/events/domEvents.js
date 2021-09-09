@@ -1,5 +1,6 @@
 import {
   createCard,
+  deleteCard,
   getSingleCard,
   showCards,
   updateCard
@@ -42,6 +43,10 @@ const domEvents = () => {
     }
     if (e.target.id.includes('delete')) {
       console.warn('Clicked Delete Button');
+      if (window.confirm('Are you sure you want to delete this card?')) {
+        const [, fireBaseKey] = e.target.id.split('--');
+        deleteCard(fireBaseKey).then(showCards);
+      }
     }
   });
 };
