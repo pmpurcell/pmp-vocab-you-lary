@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import clearDOM from '../../clearDom';
 
 const signMeOut = () => {
   firebase.auth().signOut();
+  clearDOM();
 };
 
 const logoutButton = () => {
