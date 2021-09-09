@@ -1,4 +1,5 @@
-import { createCard, showCards } from '../cardData';
+import { createCard, getSingleCard, showCards } from '../cardData';
+import renderCardForm from '../components/renderCardForm';
 
 const domEvents = () => {
   document.querySelector('#formContainer').addEventListener('click', (e) => {
@@ -13,6 +14,18 @@ const domEvents = () => {
         time: `${getTime.getHours()}:${getTime.getMinutes()}`
       };
       createCard(newWord).then(showCards);
+    }
+  });
+
+  document.querySelector('#cardContainer').addEventListener('click', (e) => {
+    if (e.target.id.includes('edit')) {
+      const [, fireBaseKey] = e.target.id.split('--');
+      console.warn('Clicked Edit Button');
+      console.warn(fireBaseKey);
+      getSingleCard(fireBaseKey).then((cardObj) => renderCardForm(cardObj));
+    }
+    if (e.target.id.includes('delete')) {
+      console.warn('Clicked Delete Button');
     }
   });
 };
