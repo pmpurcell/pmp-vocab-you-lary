@@ -9,7 +9,7 @@ const navBuilder = () => {
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">New Word!</a>
+        <a class="nav-link" id="new-word">New Word!</a>
       </div>
     </div>
   </div>

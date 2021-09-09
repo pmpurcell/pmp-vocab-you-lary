@@ -1,7 +1,6 @@
 const domBuilder = () => {
   document.querySelector('#app').innerHTML = `
     <div id="navbar">NavBar</div>
-    <div id="mainContainer">
     <div id="filterContainer">
     <button type="button" class="btn btn-secondary">Button 1</button>
     <button type="button" class="btn btn-secondary">Button 2</button>
@@ -10,7 +9,6 @@ const domBuilder = () => {
     <div>
     <div id="cardContainer"><div>
     <div id="formContainer"><div>
-    </div>
     `;
 };
 
