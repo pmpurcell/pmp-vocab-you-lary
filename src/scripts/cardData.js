@@ -1,5 +1,6 @@
 import axios from 'axios';
 import firebaseConfig from '../api/apiKeys';
+import clearDOM from '../clearDom';
 
 const dbUrl = firebaseConfig.databaseURL;
 
@@ -10,7 +11,22 @@ const getCards = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createCard = (cardObj) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbUrl}/vocabwords.json`, cardObj)
+    .then((response) => {
+      const body = { fireBaseKey: response.data.name };
+      axios
+        .patch(`${dbUrl}/vocabwords/${response.data.name}.json`, body)
+        .then(() => {
+          getCards(cardObj).then(resolve);
+        });
+    })
+    .catch(reject);
+});
+
 const showCards = (array) => {
+  clearDOM();
   array.forEach((element) => {
     document.querySelector('#cardContainer').innerHTML += `
     <div id="vocabCard">
@@ -22,4 +38,4 @@ const showCards = (array) => {
   });
 };
 
-export { getCards, showCards };
+export { getCards, showCards, createCard };
