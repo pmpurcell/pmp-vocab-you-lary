@@ -22,13 +22,15 @@ const domEvents = () => {
     }
     if (e.target.id.includes('update-card')) {
       e.preventDefault();
+      const [, fireBaseKey] = e.target.id.split('--');
       console.warn('Card Updated!');
       const getTime = new Date();
       const newWord = {
         title: document.querySelector('#cardTitle').value,
         definition: document.querySelector('#cardDef').value,
         language: document.querySelector('#cardLang').value,
-        time: `${getTime.getHours()}:${getTime.getMinutes()}`
+        time: `${getTime.getHours()}:${getTime.getMinutes()}`,
+        fireBaseKey
       };
       updateCard(newWord).then(showCards);
     }
