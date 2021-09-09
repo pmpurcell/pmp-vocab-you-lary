@@ -12,7 +12,13 @@ const renderCardForm = () => {
     <label for="cardDef" class="form-label">Definition</label>
     <input type="text" class="form-control" id="cardDef">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <select class="form-select" id="cardLang" aria-label="Language">
+  <option selected>Open this select menu</option>
+  <option value="HTML">HTML</option>
+  <option value="CSS">CSS</option>
+  <option value="Javascript">Javascript</option>
+  </select>
+  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 </form>
     `;
 };
