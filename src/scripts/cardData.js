@@ -1,6 +1,7 @@
 import axios from 'axios';
 import firebaseConfig from '../api/apiKeys';
 import clearDOM from '../clearDom';
+import filterButtons from './components/filterButtons';
 
 const dbUrl = firebaseConfig.databaseURL;
 
@@ -48,6 +49,7 @@ const deleteCard = (fireBaseKey) => new Promise((resolve, reject) => {
 
 const showCards = (array) => {
   clearDOM();
+  filterButtons();
   array.forEach((element) => {
     document.querySelector('#cardContainer').innerHTML += `
     <div id="vocabCard">

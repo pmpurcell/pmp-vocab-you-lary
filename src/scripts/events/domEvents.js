@@ -11,7 +11,7 @@ const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
     if (e.target.id.includes('submit-card')) {
       e.preventDefault();
-      console.warn(e.target.id);
+      console.warn('Card submitted');
       const getTime = new Date();
       const newWord = {
         title: document.querySelector('#cardTitle').value,
