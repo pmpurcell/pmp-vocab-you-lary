@@ -5,9 +5,9 @@ import filterButtons from './components/filterButtons';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const getCards = () => new Promise((resolve, reject) => {
+const getCards = (userId) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/vocabwords.json`)
+    .get(`${dbUrl}/vocabwords.json?orderBy="user_id"&equalTo="${userId}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
@@ -20,7 +20,7 @@ const createCard = (cardObj) => new Promise((resolve, reject) => {
       axios
         .patch(`${dbUrl}/vocabwords/${response.data.name}.json`, body)
         .then(() => {
-          getCards().then(resolve);
+          getCards(cardObj.user_id).then(resolve);
         });
     })
     .catch(reject);
@@ -36,21 +36,24 @@ const getSingleCard = (fireBaseKey) => new Promise((resolve, reject) => {
 const updateCard = (cardObj) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbUrl}/vocabwords/${cardObj.fireBaseKey}.json`, cardObj)
-    .then(() => getCards(cardObj).then(resolve))
+    .then(() => getCards(cardObj.user_id).then(resolve))
     .catch(reject);
 });
 
-const deleteCard = (fireBaseKey) => new Promise((resolve, reject) => {
+const deleteCard = (fireBaseKey, userId) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbUrl}/vocabwords/${fireBaseKey}.json`)
-    .then(() => getCards().then(resolve))
+    .then(() => getCards(userId).then(resolve))
     .catch(reject);
 });
 
-const filterCards = (languageValue) => new Promise((resolve, reject) => {
-  axios
-    .get(`${dbUrl}/vocabwords.json?orderBy="language"&equalTo="${languageValue}"`)
-    .then((response) => resolve(Object.values(response.data)))
+const filterCards = (languageValue, uid) => new Promise((resolve, reject) => {
+  getCards(uid)
+    .then((userCards) => {
+      const filteredCards = userCards.filter((card) => (card.language === languageValue));
+      console.warn(filteredCards);
+      resolve(filteredCards);
+    })
     .catch(reject);
 });
 

@@ -4,13 +4,13 @@ import navBuilder from './components/navBuilder';
 import domEvents from './events/domEvents';
 import navEvents from './events/navEvents';
 
-const startApp = () => {
+const startApp = (user) => {
   console.warn('YOU ARE UP AND RUNNING!');
   domBuilder();
   navBuilder();
-  getCards().then(showCards);
-  domEvents();
-  navEvents();
+  getCards(user.uid).then(showCards);
+  domEvents(user.uid);
+  navEvents(user.uid);
 };
 
 export default startApp;

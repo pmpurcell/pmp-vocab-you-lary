@@ -8,7 +8,7 @@ import {
 } from '../cardData';
 import renderCardForm from '../components/renderCardForm';
 
-const domEvents = () => {
+const domEvents = (uid) => {
   document.querySelector('#app').addEventListener('click', (e) => {
     if (e.target.id.includes('submit-card')) {
       e.preventDefault();
@@ -18,7 +18,8 @@ const domEvents = () => {
         title: document.querySelector('#cardTitle').value,
         definition: document.querySelector('#cardDef').value,
         language: document.querySelector('#cardLang').value,
-        time: `${getTime.getHours()}:${getTime.getMinutes()}`
+        time: `${getTime.getHours()}:${getTime.getMinutes()}`,
+        user_id: uid
       };
       createCard(newWord).then(showCards);
     }
@@ -32,7 +33,8 @@ const domEvents = () => {
         definition: document.querySelector('#cardDef').value,
         language: document.querySelector('#cardLang').value,
         time: `${getTime.getHours()}:${getTime.getMinutes()}`,
-        fireBaseKey
+        fireBaseKey,
+        user_id: uid
       };
       updateCard(newWord).then(showCards);
     }
@@ -46,13 +48,13 @@ const domEvents = () => {
       console.warn('Clicked Delete Button');
       if (window.confirm('Are you sure you want to delete this card?')) {
         const [, fireBaseKey] = e.target.id.split('--');
-        deleteCard(fireBaseKey).then(showCards);
+        deleteCard(fireBaseKey, uid).then(showCards);
       }
     }
     if (e.target.id.includes('filter')) {
       const [, languageType] = e.target.id.split('--');
       console.warn(`Clicked ${languageType} Button`);
-      filterCards(languageType).then(showCards);
+      filterCards(languageType, uid).then(showCards);
     }
   });
 };
