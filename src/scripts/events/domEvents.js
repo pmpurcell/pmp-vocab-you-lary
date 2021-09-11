@@ -9,7 +9,7 @@ import {
 import renderCardForm from '../components/renderCardForm';
 
 const domEvents = (uid) => {
-  document.querySelector('#app').addEventListener('click', (e) => {
+  document.querySelector('#mainContainer').addEventListener('click', (e) => {
     if (e.target.id.includes('submit-card')) {
       e.preventDefault();
       console.warn(e.target.id);

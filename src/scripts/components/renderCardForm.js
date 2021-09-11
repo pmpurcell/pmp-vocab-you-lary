@@ -10,7 +10,7 @@ const renderCardForm = (obj = { }) => {
   </div>
   <div class="mb-3">
     <label for="cardDef" class="form-label">Definition</label>
-    <textarea type="text" class="form-control" id="cardDef" value="${obj.definition || ''}"> </textarea>
+    <input type="text" class="form-control" id="cardDef" value="${obj.definition || ''}">
   </div>
   <label for="cardLang" class="form-label">Language</label>
   <select class="form-select" id="cardLang" aria-label="Language" value="${obj.language || ''}">
