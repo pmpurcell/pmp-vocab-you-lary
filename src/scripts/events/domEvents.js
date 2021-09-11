@@ -12,7 +12,7 @@ const domEvents = (uid) => {
   document.querySelector('#app').addEventListener('click', (e) => {
     if (e.target.id.includes('submit-card')) {
       e.preventDefault();
-      console.warn('Card submitted');
+      console.warn(e.target.id);
       const getTime = new Date();
       const newWord = {
         title: document.querySelector('#cardTitle').value,
@@ -46,10 +46,10 @@ const domEvents = (uid) => {
     }
     if (e.target.id.includes('delete')) {
       console.warn('Clicked Delete Button');
-      if (window.confirm('Are you sure you want to delete this card?')) {
-        const [, fireBaseKey] = e.target.id.split('--');
-        deleteCard(fireBaseKey, uid).then(showCards);
-      }
+      // if (window.confirm('Are you sure you want to delete this card?')) {
+      const [, fireBaseKey] = e.target.id.split('--');
+      deleteCard(fireBaseKey, uid).then(showCards);
+      // }
     }
     if (e.target.id.includes('filter')) {
       const [, languageType] = e.target.id.split('--');

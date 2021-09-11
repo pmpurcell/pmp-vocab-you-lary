@@ -5,15 +5,16 @@ const renderCardForm = (obj = { }) => {
   document.querySelector('#formContainer').innerHTML = `
     <form>
   <div class="mb-3">
-    <label for="cardTitle" class="form-label"></label>
+    <label for="cardTitle" class="form-label">Title</label>
     <input type="type" class="form-control" id="cardTitle" value="${obj.title || ''}">
   </div>
   <div class="mb-3">
-    <label for="cardDef" class="form-label"></label>
-    <input type="text" class="form-control" id="cardDef" value="${obj.definition || ''}">
+    <label for="cardDef" class="form-label">Definition</label>
+    <textarea type="text" class="form-control" id="cardDef" value="${obj.definition || ''}"> </textarea>
   </div>
+  <label for="cardLang" class="form-label">Language</label>
   <select class="form-select" id="cardLang" aria-label="Language" value="${obj.language || ''}">
-  <option selected>Open this select menu</option>
+  <option>${obj.language || ''}</option>
   <option value="HTML">HTML</option>
   <option value="CSS">CSS</option>
   <option value="Javascript">Javascript</option>

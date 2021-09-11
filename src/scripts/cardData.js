@@ -65,7 +65,7 @@ const showCards = (array) => {
     <div id="vocabCard">
       <h5>${element.title}</h5>
       <p>${element.definition}</p>
-      <p>${element.language}</p>
+      <p>Language: ${element.language}</p>
       <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" id="edit--${element.fireBaseKey}" class="btn btn-outline-primary">Edit</button>
         <button type="button" id="delete--${element.fireBaseKey}" class="btn btn-outline-primary">Delete</button>

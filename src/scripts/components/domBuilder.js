@@ -1,12 +1,9 @@
 const domBuilder = () => {
+  document.querySelector('#welcome').innerHTML = '';
+  document.querySelector('#login-form-container').innerHTML = '';
   document.querySelector('#app').innerHTML = `
     <div id="navbar">NavBar</div>
-    <div id="filterContainer">
-    <button type="button" class="btn btn-secondary">Button 1</button>
-    <button type="button" class="btn btn-secondary">Button 2</button>
-    <button type="button" class="btn btn-secondary">Button 3</button>
-    <button type="button" class="btn btn-secondary">Button 4</button>
-    </div>
+    <div id="filterContainer"></div>
     <div id="cardContainer"></div>
     <div id="formContainer"></div>
     `;
