@@ -5,6 +5,7 @@ import filterButtons from './components/filterButtons';
 
 const dbUrl = firebaseConfig.databaseURL;
 
+// GETS USER CARDS FROM API
 const getCards = (userId) => new Promise((resolve, reject) => {
   axios
     .get(`${dbUrl}/vocabwords.json?orderBy="user_id"&equalTo="${userId}"`)
@@ -12,6 +13,7 @@ const getCards = (userId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// CREATES A NEW CARD
 const createCard = (cardObj) => new Promise((resolve, reject) => {
   axios
     .post(`${dbUrl}/vocabwords.json`, cardObj)
@@ -26,6 +28,7 @@ const createCard = (cardObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// GETS A SINGLE CARD
 const getSingleCard = (fireBaseKey) => new Promise((resolve, reject) => {
   axios
     .get(`${dbUrl}/vocabwords/${fireBaseKey}.json`)
@@ -33,6 +36,7 @@ const getSingleCard = (fireBaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// UPDATES A CARDS INFORMATION
 const updateCard = (cardObj) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbUrl}/vocabwords/${cardObj.fireBaseKey}.json`, cardObj)
@@ -40,6 +44,7 @@ const updateCard = (cardObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// DELETES A CARD
 const deleteCard = (fireBaseKey, userId) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbUrl}/vocabwords/${fireBaseKey}.json`)
@@ -47,6 +52,7 @@ const deleteCard = (fireBaseKey, userId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// FILTERS CARDS BY LANGUAGE TYPE
 const filterCards = (languageValue, uid) => new Promise((resolve, reject) => {
   getCards(uid)
     .then((userCards) => {
@@ -57,6 +63,7 @@ const filterCards = (languageValue, uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// SHOWS CARDS ON THE DOM
 const showCards = (array) => {
   clearDOM();
   filterButtons();
@@ -75,6 +82,24 @@ const showCards = (array) => {
   });
 };
 
+// SORT CARDS ALPHABETICALLY
+const alphabetCards = (array) => {
+  array.sort((a, b) => a.title.localeCompare(b.title));
+  return showCards(array);
+};
+
+// SORT CARDS BY NEWEST
+const newestCards = (array) => {
+  array.sort((a, b) => a.time.localeCompare(b.time));
+  return showCards(array);
+};
+
+// SORT CARDS BY OLDEST
+const oldestCards = (array) => {
+  array.sort((a, b) => b.time.localeCompare(a.time));
+  return showCards(array);
+};
+
 export {
   getCards,
   showCards,
@@ -82,5 +107,8 @@ export {
   getSingleCard,
   updateCard,
   deleteCard,
-  filterCards
+  filterCards,
+  alphabetCards,
+  newestCards,
+  oldestCards
 };
