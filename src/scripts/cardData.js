@@ -88,14 +88,14 @@ const alphabetCards = (array) => {
   return showCards(array);
 };
 
-// SORT CARDS BY NEWEST
-const newestCards = (array) => {
+// SORT CARDS BY OLDEST
+const oldestCards = (array) => {
   array.sort((a, b) => a.time.localeCompare(b.time));
   return showCards(array);
 };
 
-// SORT CARDS BY OLDEST
-const oldestCards = (array) => {
+// SORT CARDS BY NEWEST
+const newestCards = (array) => {
   array.sort((a, b) => b.time.localeCompare(a.time));
   return showCards(array);
 };
