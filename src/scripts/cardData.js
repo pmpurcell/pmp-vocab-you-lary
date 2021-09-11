@@ -63,6 +63,20 @@ const filterCards = (languageValue, uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// SEARCH AND RETURN CARDS?
+const searchCards = (searchString, uid) => new Promise((resolve, reject) => {
+  getCards(uid)
+    .then((userCards) => {
+      const foundCards = userCards.filter((card) => {
+        const queryIsInTitle = card.title.toLowerCase().includes(searchString);
+        const queryIsInDefinition = card.definition.toLowerCase().includes(searchString);
+        return (queryIsInTitle || queryIsInDefinition);
+      });
+      resolve(foundCards);
+    })
+    .catch(reject);
+});
+
 // SHOWS CARDS ON THE DOM
 const showCards = (array) => {
   clearDOM();
@@ -110,5 +124,6 @@ export {
   filterCards,
   alphabetCards,
   newestCards,
-  oldestCards
+  oldestCards,
+  searchCards
 };

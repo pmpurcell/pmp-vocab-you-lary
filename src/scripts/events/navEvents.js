@@ -1,4 +1,4 @@
-import { getCards, showCards } from '../cardData';
+import { getCards, searchCards, showCards } from '../cardData';
 import renderCardForm from '../components/renderCardForm';
 
 const navEvents = (uid) => {
@@ -9,6 +9,11 @@ const navEvents = (uid) => {
     if (e.target.id.includes('new-word')) {
       renderCardForm();
     }
+  });
+  document.querySelector('#search').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const searchValue = document.querySelector('#search-value').value.toLowerCase();
+    searchCards(searchValue, uid).then(showCards);
   });
 };
 
