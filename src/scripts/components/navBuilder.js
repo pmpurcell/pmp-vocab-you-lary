@@ -8,7 +8,7 @@ const navBuilder = () => {
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link active" aria-current="page" id="home">Home</a>
         <a class="nav-link" id="new-word">New Word!</a>
       </div>
     </div>
