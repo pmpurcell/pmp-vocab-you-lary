@@ -1,6 +1,7 @@
 import {
   createCard,
   deleteCard,
+  filterCards,
   getSingleCard,
   showCards,
   updateCard
@@ -47,6 +48,18 @@ const domEvents = () => {
         const [, fireBaseKey] = e.target.id.split('--');
         deleteCard(fireBaseKey).then(showCards);
       }
+    }
+    if (e.target.id.includes('HTML')) {
+      console.warn('Clicked HTML Button');
+      filterCards(e.target.id).then(showCards);
+    }
+    if (e.target.id.includes('CSS')) {
+      console.warn('Clicked CSS Button');
+      filterCards(e.target.id).then(showCards);
+    }
+    if (e.target.id.includes('Javascript')) {
+      console.warn('Clicked Javascript Button');
+      filterCards(e.target.id).then(showCards);
     }
   });
 };

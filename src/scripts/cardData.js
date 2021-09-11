@@ -47,6 +47,13 @@ const deleteCard = (fireBaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const filterCards = (languageValue) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/vocabwords.json?orderBy="language"&equalTo="${languageValue}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch(reject);
+});
+
 const showCards = (array) => {
   clearDOM();
   filterButtons();
@@ -71,5 +78,6 @@ export {
   createCard,
   getSingleCard,
   updateCard,
-  deleteCard
+  deleteCard,
+  filterCards
 };
