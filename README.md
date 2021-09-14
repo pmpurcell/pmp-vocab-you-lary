@@ -29,7 +29,10 @@ The user can search for words based on their name or definition.
 - [Project Board](https://github.com/pmpurcell/pmp-vocab-you-lary/projects/1)
 
 ## Code Snippet!
+### Search Function
 ![Screenshot (22)](https://user-images.githubusercontent.com/86082231/133187938-02b37792-cb4b-42cf-ac95-ace053d1ee5c.png)
+
+### Floating Cards Animation
 ![Screenshot (24)](https://user-images.githubusercontent.com/86082231/133187964-37ece648-63e6-45d6-82d6-0d69f10c7fb7.png)
 
 ## Project Screenshots
