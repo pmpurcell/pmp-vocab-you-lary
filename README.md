@@ -1,8 +1,8 @@
-# Vocab-You-Lary
+# Vocab-You-Lary [![Netlify Status](https://api.netlify.com/api/v1/badges/c6bf8e9d-9c11-4a95-80ee-22973c9469b0/deploy-status)](https://app.netlify.com/sites/pmp-vocab-you-lary/deploys)
 
 Compile all your knowledge of Code in one place!
 
-[View App](https://pmp-bear-watcher.netlify.app/)
+[View App](https://pmp-vocab-you-lary.netlify.app/)
 
 ## Get Started 
 
