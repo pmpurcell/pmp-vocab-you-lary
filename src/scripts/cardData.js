@@ -63,7 +63,7 @@ const filterCards = (languageValue, uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// SEARCH AND RETURN CARDS?
+// SEARCH AND RETURN CARDS
 const searchCards = (searchString, uid) => new Promise((resolve, reject) => {
   getCards(uid)
     .then((userCards) => {
