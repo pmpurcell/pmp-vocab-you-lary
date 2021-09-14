@@ -29,8 +29,11 @@ The user can search for words based on their name or definition.
 - [Project Board](https://github.com/pmpurcell/pmp-vocab-you-lary/projects/1)
 
 ## Code Snippet!
+![Screenshot (22)](https://user-images.githubusercontent.com/86082231/133187938-02b37792-cb4b-42cf-ac95-ace053d1ee5c.png)
+![Screenshot (24)](https://user-images.githubusercontent.com/86082231/133187964-37ece648-63e6-45d6-82d6-0d69f10c7fb7.png)
 
 ## Project Screenshots
+![Screenshot (21)](https://user-images.githubusercontent.com/86082231/133187987-f2fe23d9-656a-4415-8939-00c9ac672a6a.png)
 
 ## Contributors
 - [Madden Purcell](https://github.com/pmpurcell)
